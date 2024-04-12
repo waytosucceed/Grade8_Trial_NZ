@@ -1,0 +1,159 @@
+<html>
+    <head> <title>Grade8 Trial</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="icon" type="image/x-icon" href="Logo.png">
+        <style>
+            p{
+                font-size:30px;
+                margin-top:10%;
+                font-weight: bold;
+                align-items: center;
+            }
+
+            .maindiv{
+                border: 5px rgb(164, 246, 229) ridge;
+                border-radius: 20px;
+            }
+
+            #nextbtn, #backbtn{
+                width: 30%;
+                font-size:30px;
+                margin-right: 5%
+            }
+
+            #backbtn{
+                display:none;
+            }
+            #newbtn{
+                display:none;
+            }
+
+
+            #family{
+                width:99%;
+                height:99%;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            .imgdiv{
+                width:500px;
+                height:450px;
+            }
+            #about{
+                font-weight: bold;
+                font-size:40px;
+                color:rgb(7, 7, 89)
+            }
+            #story{
+                font-size: 22px;
+                padding:10px;
+                border-radius: 20px;
+            }
+        
+        </style>
+</head>
+
+    <body> 
+        <div class="header" style="width:100%; box-shadow:5px 5px 10px rgb(0, 0, 0); padding-bottom:10px;">
+            <img src="Logo.png" width="5%" style="float:left; margin-top:25px;" class="img-responsive">
+            <span> <img src="header.png" width="30%" height="100px" class="img-responsive"></span>
+        </div>
+         <br>
+        <br>
+        
+        <center>
+         <div class="maindiv container">
+            <center>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-11 imgdiv">
+                <img id="family" src="Assests/1.jpg"> 
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-11" style= "height: 450px; ">
+                <h2 id="about"> Have you heard about Dr. Streyer?  </h2>
+                <p id="story"> Dr. Tomas Streyer stood in a room filled with his team of scientists and
+                    engineers. Excitement and fear mingled within him as they were about to
+                    embark on a remarkable journey – uncovering the origins of the universe.
+                    Despite his inner turmoil, he tried to maintain an air of calmness. Outside the
+                    window, the sky painted a serene summer blue, offering a momentary
+                    respite..</p> 
+            </div>
+        </center>
+        </div>
+        <br>
+        <div class="" style="text-align:center; padding-top:1%">
+            
+            <button id="backbtn" onclick="backpic()" class="btn btn-success">Back</button>
+            <button id="nextbtn" onclick="update()" class="btn btn-success">Continue</button>
+            <button id="newbtn" onclick="newpage()" class="btn btn-success">Next</button>
+
+        </div>
+        </center>   
+
+        <script>
+
+            var images = ["Assests/2.jpg", "Assests/3.jpg", "Assests/4.jpg", "Assests/5.jpg", "Assests/6.jpg", "Assests/7.jpg","Assests/8.jpg", "Assests/9.jpg"];
+            var para=["'Ready' he announced, pressing the first button, setting the complex machinery into motion. 'Set,' he followed, activating the massive particle accelerator buried beneath the Swiss landscape. Finally, with a deep breath,he uttered the command, 'Go' and at precisely noon, he initiated the final step.",
+            "In an instant, darkness enveloped them, leaving Tomas momentarily blinded and bewildered. Panic surged through him as he shouted in alarm. But as swiftly as it had descended, the darkness dissipated, leaving an eerie aftermath. The sky, once serene, had turned pitch black.The sun, moon, and stars had vanished.",
+            "Chaos ensued as people outside cried out in fear, reaching for their loved ones in a desperate attempt to ascertain their safety. Tomas struggled to maintain composure, forcing himself to breathe steadily as he analysed the data from the experiment. Yet, there was no explanation for the inexplicable phenomenon.",
+            "Then, almost twenty agonising minutes later, the sun reappeared, casting it's warm, familiar glow as usual. Relief washed over the crowd, laughter and dancing erupted, and Tomas felt the weight lift from his chest.",
+            " However, the joy was short-lived. Nightfall brought no stars, casting a shadow of unease over the world.",
+            "Accusations flew, blaming Tomas for the celestial disappearance. The court deemed him responsible for 'stealing' the stars, despite his protests of innocence. The verdict was swift – guilty. Tomas accepted his fate, believing it a fair penance for his unintended transgression.",
+            "For 1,596 nights, Tomas observed the starless sky, grappling with guilt and uncertainty. Yet, amidst the void, a flicker of hope persisted.",
+            "Then, on the 1,596th night, a solitary twinkle pierced the darkness – Alpha Centauri, the first star, reappeared.",
+            "Tears welled in Tomas' eyes as he made a silent wish for all stars to return, a beacon of hope amidst the endless night.In the vast expanse of the universe, Tomas found redemption in the quiet return of the stars, a reminder of the resilience of the human spirit.<br><br><br> ***** The End *****"
+            ]
+            
+            var i = -1;
+            function update(){
+                i++
+                document.getElementById("about").style.display="none"
+                document.getElementById("backbtn").style.display="inline-block"
+                if(i > images.length-1){
+                    document.getElementById("nextbtn").style.display="none"
+                    document.getElementById("newbtn").style.display="inline-block"
+                    document.getElementById("family").src = "Assests/last.jpg";
+                    document.getElementById("story").style.fontSize="40 px"
+                    document.getElementById("story").style.backgroundColor="rgb(164, 246, 229)"
+                    document.getElementById("story").innerHTML = "Can you describe the main theme of the story?";
+                }
+                else{
+                    
+                     var updated_image = images[i]; 
+                var newpara =para[i];
+                document.getElementById("family").src = updated_image;
+                document.getElementById("story").innerHTML = newpara;
+              
+            }
+            };
+
+            function backpic(){
+                i=i-1
+                console.log(i)
+                document.getElementById("story").style.fontSize="22px"
+                document.getElementById("story").style.backgroundColor="white"
+                if(i<0){
+                    document.getElementById("backbtn").style.display="none"
+                    document.getElementById("nextbtn").style.display="inline-block"
+                    document.getElementById("family").src = "Assests/1.jpg";
+                    document.getElementById("story").innerHTML = "Dr. Tomas Streyer stood in a room filled with his team of scientists and engineers. Excitement and fear mingled within him as they were about to embark on a remarkable journey – uncovering the origins of the universe. Despite his inner turmoil, he tried to maintain an air of calmness. Outside the window, the sky painted a serene summer blue, offering a momentary respite..";
+                }
+                else{
+                document.getElementById("nextbtn").style.display="inline-block"
+                var updated_image = images[i]; 
+                var newpara =para[i];
+                document.getElementById("family").src = updated_image;
+                document.getElementById("story").innerHTML = newpara;
+                }
+            }
+            function newpage(){
+                window.location="ac1.html"
+            }
+    
+    </script>
+        
+    </body>
+</html>
